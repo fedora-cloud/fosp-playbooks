@@ -1,0 +1,41 @@
+---
+- hosts: bastion
+  gather_facts: False
+  tasks:
+  - name: Install python 2
+    raw: dnf install -y {{ item }}
+    with_items:
+    - python2
+    - python2-dnf
+ 
+- hosts: bastion
+  tasks:
+  - name: Add ssh keys for admins
+    authorized_key:
+      user: fedora
+      key: "{{ lookup('file', 'files/' + item + '.pub') }}"
+    with_items:
+    - misc
+    - jberkus
+    - scollier
+    - rcook
+
+  - name: Install required packages
+    package:
+      name: "{{ item }}"
+      state: present
+    with_items:
+    - git
+    - ansible
+    - libselinux-python
+
+  - name: Checkout openshift-ansible
+    git:
+      repo: https://github.com/openshift/openshift-ansible.git
+      dest: /opt/openshift-ansible
+      version: openshift-ansible-3.3.13-1
+
+  - name: Copy hosts file
+    copy:
+      src: hosts
+      dest: /etc/ansible/hosts

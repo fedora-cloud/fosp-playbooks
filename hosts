@@ -1,2 +1,2 @@
 [bastion]
-209.132.184.111 ansible_user=fedora
+209.132.184.111 ansible_user=fedora ansible_become=yes
