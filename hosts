@@ -1,0 +1,2 @@
+[bastion]
+209.132.184.111 ansible_user=fedora
