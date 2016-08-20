@@ -1,0 +1,15 @@
+---
+- hosts: fedora_24
+  gather_facts: False
+  tasks:
+  - name: Install python 2
+    raw: dnf install -y {{ item }}
+    with_items:
+    - python2
+    - python2-dnf
+  - name: Install required packages
+    dnf:
+      name: "{{ item }}"
+      state: present
+    with_items:
+    - libselinux-python
