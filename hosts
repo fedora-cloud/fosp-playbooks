@@ -16,17 +16,17 @@ ansible_user=fedora
 ansible_become=yes
 
 [masters]
-172.25.160.13
-172.25.160.14
-172.25.160.15
+master-1 ansible_host=172.25.160.13
+master-2 ansible_host=172.25.160.14
+master-3 ansible_host=172.25.160.15
 
 [nodes]
-172.25.160.16
-172.25.160.17
+node-1 ansible_host=172.25.160.16
+node-2 ansible_host=172.25.160.17
 
 [infra]
-172.25.160.18
-172.25.160.19
+infra-1 ansible_host=172.25.160.18
+infra-2 ansible_host=172.25.160.19
 
 [etcd:children]
 masters
