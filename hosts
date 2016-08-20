@@ -1,5 +1,5 @@
 [bastion]
-209.132.184.111
+bastion ansible_host=209.132.184.111
 
 [beyond_bastion]
 172.25.160.[13:19]

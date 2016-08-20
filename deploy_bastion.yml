@@ -32,3 +32,16 @@
     copy:
       src: hosts
       dest: /etc/ansible/hosts
+
+  - name: Create ssh keys
+    user:
+      name: root
+      generate_ssh_key: yes
+    register: key
+
+- hosts: all
+  tasks:
+  - name: Add key to deploy
+    authorized_key:
+      user: fedora
+      key: "{{ hostvars['bastion']['key']['ssh_public_key'] }}"
