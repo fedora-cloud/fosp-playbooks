@@ -1,14 +1,5 @@
 ---
-- hosts: bastion
-  gather_facts: False
-  tasks:
-  - name: Install python 2
-    raw: dnf install -y {{ item }}
-    with_items:
-    - python2
-    - python2-dnf
- 
-- hosts: bastion
+- hosts: all
   tasks:
   - name: Add ssh keys for admins
     authorized_key:
@@ -20,6 +11,8 @@
     - scollier
     - rcook
 
+- hosts: bastion
+  tasks:
   - name: Install required packages
     package:
       name: "{{ item }}"
