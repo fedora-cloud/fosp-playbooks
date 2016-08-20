@@ -13,3 +13,5 @@
       state: present
     with_items:
     - libselinux-python
+  - name: Upgrade all systems
+    command: dnf upgrade -y
