@@ -21,7 +21,8 @@
     - git
     - ansible
     - libselinux-python
-
+    # needed or ansible version check fail
+    - pyOpenSSL
   - name: Checkout openshift-ansible
     git:
       repo: https://github.com/openshift/openshift-ansible.git
@@ -45,3 +46,7 @@
     authorized_key:
       user: fedora
       key: "{{ hostvars['bastion']['key']['ssh_public_key'] }}"
+  - name: Install needed packages
+    dnf:
+      name: dbus-python
+      state: present
