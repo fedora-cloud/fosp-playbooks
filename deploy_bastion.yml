@@ -50,3 +50,8 @@
     dnf:
       name: dbus-python
       state: present
+
+  - name: Copy system hosts file
+    template:
+      src: hosts.system
+      dest: /etc/hosts
