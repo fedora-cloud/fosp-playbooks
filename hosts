@@ -1,8 +1,8 @@
 [bastion]
 bastion ansible_host=209.132.184.111
 
-[beyond_bastion]
-172.25.160.[13:19]
+[beyond_bastion:children]
+OSv3
 
 [beyond_bastion:vars]
 ansible_ssh_common_args='-o ProxyCommand="ssh -W %h:%p -q fedora@209.132.184.111"'
