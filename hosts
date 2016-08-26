@@ -16,17 +16,17 @@ ansible_user=fedora
 ansible_become=yes
 
 [masters]
-master-1 ansible_host=172.25.160.13
-master-2 ansible_host=172.25.160.14
-master-3 ansible_host=172.25.160.15
+master-1 ansible_host=172.25.160.13 openshift_hostname=master-1.fosp
+master-2 ansible_host=172.25.160.14 openshift_hostname=master-2.fosp
+master-3 ansible_host=172.25.160.15 openshift_hostname=master-3.fosp
 
 [nodes]
-node-1 ansible_host=172.25.160.16
-node-2 ansible_host=172.25.160.17
+node-1 ansible_host=172.25.160.16 openshift_hostname=node-1.fosp
+node-2 ansible_host=172.25.160.17 openshift_hostname=node-2.fosp
 
 [infra]
-infra-1 ansible_host=172.25.160.18
-infra-2 ansible_host=172.25.160.19
+infra-1 ansible_host=172.25.160.18 openshift_hostname=infra-1.fosp
+infra-2 ansible_host=172.25.160.19 openshift_hostname=infra-2.fosp
 
 [etcd:children]
 masters
