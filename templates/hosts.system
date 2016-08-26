@@ -1,7 +1,6 @@
-{{ ansible_hostname }} 127.0.0.1
-{{ inventory_hostname }}.local 127.0.0.1
+127.0.0.1 {{ ansible_hostname }}
 {% for p in play_hosts %}
-{% if p != inventory_hostname and p != 'bastion' %}
-{{ p }}.local {{ hostvars[p]['ansible_host'] }}
+{% if p != 'bastion' %}
+{{ hostvars[p]['ansible_host'] }} {{ p }}.fosp
 {% endif %}
 {% endfor %}
