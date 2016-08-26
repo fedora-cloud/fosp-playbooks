@@ -58,8 +58,11 @@
       key: "{{ hostvars['bastion']['key']['ssh_public_key'] }}"
   - name: Install needed packages
     dnf:
-      name: dbus-python
+      name: "{{ item }}"
       state: present
+    with_items:
+    - libsemanage-python
+    - dbus-python
 
   - name: Copy system hosts file
     template:
