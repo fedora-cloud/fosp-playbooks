@@ -40,6 +40,16 @@
       generate_ssh_key: yes
     register: key
 
+  - name: Install dnsmasq
+    package:
+      name: dnsmasq
+      state: present
+
+  - service:
+      name: dnsmasq
+      state: started
+      enabled: True
+
 - hosts: all
   tasks:
   - name: Add key to deploy
@@ -55,3 +65,12 @@
     template:
       src: hosts.system
       dest: /etc/hosts
+
+  - name: Set hostname
+    hostname:
+      name: "{{ inventory_hostname }}.fosp"
+
+  - name:
+    copy:
+      dest: /etc/resolv.conf
+      content: "search fosp\nnameserver 172.25.160.12\n"
