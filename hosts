@@ -16,17 +16,17 @@ ansible_user=fedora
 ansible_become=yes
 
 [masters]
-master-1 ansible_host=172.25.160.13 openshift_hostname=master-1.fosp
-master-2 ansible_host=172.25.160.14 openshift_hostname=master-2.fosp
-master-3 ansible_host=172.25.160.15 openshift_hostname=master-3.fosp
+master-1 ansible_host=172.25.160.25 openshift_hostname=master-1.fosp
+master-2 ansible_host=172.25.160.26 openshift_hostname=master-2.fosp
+master-3 ansible_host=172.25.160.27 openshift_hostname=master-3.fosp
 
 [nodes]
-node-1 ansible_host=172.25.160.16 openshift_hostname=node-1.fosp
-node-2 ansible_host=172.25.160.17 openshift_hostname=node-2.fosp
+node-1 ansible_host=172.25.160.23 openshift_hostname=node-1.fosp
+node-2 ansible_host=172.25.160.24 openshift_hostname=node-2.fosp
 
 [infra]
-infra-1 ansible_host=172.25.160.18 openshift_hostname=infra-1.fosp
-infra-2 ansible_host=172.25.160.19 openshift_hostname=infra-2.fosp
+infra-1 ansible_host=172.25.160.21 openshift_hostname=infra-1.fosp
+infra-2 ansible_host=172.25.160.22 openshift_hostname=infra-2.fosp
 
 [etcd:children]
 masters
@@ -36,4 +36,25 @@ infra
 masters
 nodes
 etcd
+
+[OSv3:vars]
+
+deployment_type=origin
+openshift_override_hostname_check=false
+openshift_use_openshift_sdn=false
+openshift_set_node_ip=true
+openshift_use_flannel=true
+openshift_use_dnsmasq=true
+openshift_master_cluster_hostname=master-1.fosp
+openshift_master_cluster_public_hostname=master.fosp
+openshift_master_cluster_method=native
+
+
+[masters:vars]
+openshift_schedulable=true
+openshift_router_selector="region=infra"
+
+
+[nodes:vars]
+openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
 
