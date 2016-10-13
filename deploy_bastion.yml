@@ -27,7 +27,7 @@
     git:
       repo: https://github.com/openshift/openshift-ansible.git
       dest: /opt/openshift-ansible
-      version: openshift-ansible-3.3.13-1
+      version: openshift-ansible-3.3.35-1
 
   - name: Copy hosts file
     copy:
