@@ -76,4 +76,4 @@
   - name:
     copy:
       dest: /etc/resolv.conf
-      content: "search fosp\nnameserver 172.25.160.12\n"
+      content: "search fosp\nnameserver 172.25.160.20\n"
