@@ -29,10 +29,21 @@
       dest: /opt/openshift-ansible
       version: openshift-ansible-3.3.35-1
 
-  - name: Copy hosts file
+  - name: Create directories for holding vars
+    file:
+      name: "/etc/ansible/{{ item }}"
+      state: directory
+    with_items:
+    - group_vars
+    - group_vars/masters
+
+  - name: Copy ansible files
     copy:
-      src: hosts
-      dest: /etc/ansible/hosts
+      src: "{{ item }}"
+      dest: "/etc/ansible/{{ item }}"
+    with_items:
+    - hosts
+    - group_vars/masters/example.yml
 
   - name: Create ssh keys
     user:
