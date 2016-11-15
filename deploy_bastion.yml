@@ -50,6 +50,11 @@
       state: started
       enabled: True
 
+  - copy:
+      src: files/deploy.sh
+      dest: /usr/local/bin/deploy.sh
+      mode: 0755
+
 - hosts: all
   tasks:
   - name: Add key to deploy
@@ -77,3 +82,4 @@
     copy:
       dest: /etc/resolv.conf
       content: "search fosp\nnameserver 172.25.160.20\n"
+
