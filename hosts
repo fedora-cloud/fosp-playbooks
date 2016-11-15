@@ -54,6 +54,7 @@ openshift_master_cluster_method=native
 openshift_schedulable=true
 openshift_router_selector="region=infra"
 
+openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
 
 [nodes:vars]
 openshift_node_labels="{'region': 'primary', 'zone': 'default'}"

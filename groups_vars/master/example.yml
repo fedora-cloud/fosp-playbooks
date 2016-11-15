@@ -1,0 +1,15 @@
+## Copy this file in password.yml (name do not matter)
+## and uncomment the following, replacing pre-hashed password
+## with password generated like this:
+##  $ htpasswd -nB misc     
+##  New password: 
+##  Re-type new password: 
+##  misc:$apr1$HwQnnUtw$v9xjBQgrQ40/jXrQex12T1
+## 
+## Remove the username and the first ':'
+
+# 
+#openshift_master_htpasswd_users:
+#    'misc': '$apr1$HwQnnUtw$v9xjBQgrQ40/jXrQex12T1'
+#    'scollier': '<pre-hashed password>'
+#
