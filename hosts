@@ -46,7 +46,7 @@ openshift_set_node_ip=true
 openshift_use_flannel=true
 openshift_use_dnsmasq=true
 openshift_master_cluster_hostname=master-1.fosp
-openshift_master_cluster_public_hostname=master.fosp
+openshift_master_cluster_public_hostname=fosp.fedorainfracloud.org
 openshift_master_cluster_method=native
 
 
