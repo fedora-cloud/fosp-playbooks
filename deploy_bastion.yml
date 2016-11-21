@@ -62,19 +62,20 @@
     - libsemanage-python
     - dbus-python
 
+  - name: Set hostname
+    hostname:
+      name: "{{ inventory_hostname }}.fosp"
+
   - name: Copy system hosts file
     template:
       src: hosts.system
       dest: /etc/hosts
 
-  - name: Set hostname
-    hostname:
-      name: "{{ inventory_hostname }}.fosp"
-
   - name:
     copy:
       dest: /etc/resolv.conf
       content: "search fosp\nnameserver 172.25.160.20\n"
+
 - hosts: bastion
   roles:
   - haproxy_bastion
