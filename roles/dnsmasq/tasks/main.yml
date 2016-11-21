@@ -1,0 +1,10 @@
+---
+- name: Install dnsmasq
+  package:
+    name: dnsmasq
+    state: present
+
+- service:
+    name: dnsmasq
+    state: started
+    enabled: True

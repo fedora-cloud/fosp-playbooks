@@ -51,16 +51,6 @@
       generate_ssh_key: yes
     register: key
 
-  - name: Install dnsmasq
-    package:
-      name: dnsmasq
-      state: present
-
-  - service:
-      name: dnsmasq
-      state: started
-      enabled: True
-
   - copy:
       src: files/deploy.sh
       dest: /usr/local/bin/deploy.sh
@@ -96,3 +86,4 @@
 - hosts: bastion
   roles:
   - haproxy_bastion
+  - dnsmasq 
