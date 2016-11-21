@@ -1,0 +1,11 @@
+- name: Add ssh keys for admins
+  authorized_key:
+    user: fedora
+    key: "{{ item }}"
+  with_file:
+  - misc.pub
+  - jberkus.pub
+  - scollier.pub
+  - rcook.pub
+
+

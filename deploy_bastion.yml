@@ -1,15 +1,7 @@
 ---
 - hosts: all
-  tasks:
-  - name: Add ssh keys for admins
-    authorized_key:
-      user: fedora
-      key: "{{ lookup('file', 'files/' + item + '.pub') }}"
-    with_items:
-    - misc
-    - jberkus
-    - scollier
-    - rcook
+  roles:
+  - admin_ssh_keys
 
 - hosts: bastion
   tasks:
