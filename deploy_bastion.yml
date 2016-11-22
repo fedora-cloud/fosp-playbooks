@@ -59,8 +59,8 @@
       name: "{{ item }}"
       state: present
     with_items:
-    - libsemanage-python
-    - dbus-python
+    - "libsemanage-python{{ ansible_python['version']['major']}}"
+    - "python{{ ansible_python['version']['major']}}-dbus"
 
   - name: Set hostname
     hostname:
